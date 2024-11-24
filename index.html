@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="확률 기반 로또 번호 추첨">
+    <meta name="keywords" content="로또, 번호, 추첨, 확률, 로또 번호, 로또 번호 추첨, 로또 번호 확률, 확률 기반 로또 번호 추첨">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="확률 기반 로또 번호 추첨:당첨 확률을 높여보세요">
+    <meta property="og:description" content="자신만의 확률을 선택해서 로또 번호를 추첨해보세요, 당첨 확률을 높여보세요">
+    <meta property="og:image" content="https://your-website.com/v6_28.png">
+    <meta property="og:url" content="https://lottonumberdraw.shop">
+    <link href="./css/main.css" rel="stylesheet">
+    <title>확률 기반 로또 번호 추첨</title>
+</head>
+<body>
+    <header>
+        <h1>확률  기반  로또  번호  추첨</h1>
+    </header>
+
+    <main>
+        <section class = "phrase">
+            <h2>“운은 너가 생각하는 만큼 무작위적이지 않다. 누군가가 로또에 당첨되기 위해서는, 로또를 사야만 한다." </h2>
+            <blockquote> 
+                - Vera Nazarian, The Perpetual Calendar of Inspiration -
+            </blockquote>
+        </section>
+        
+        <div class = "section1_container">
+            <section class = "prob-button">
+                <h2>적용 확률 선택</h2>
+                <div class = "text_container">
+                    <p class = "classic_text">클래식</p>
+                    <p class = "random_text">랜덤</p>
+                    <p class = "reverse_text">리버스</p>
+                </div>
+                <div class = "button1_container">
+                    <div class = "bar"></div>
+                    <button class = "classic"></button>
+                    <button class = "random"></button>
+                    <button class = "reverse"></button>
+                </div>
+                <p class = "prob_text">확률을 선택하십시오</p>
+            </section>
+            <section class = "select-button">
+                <h2>번호군 선택</h2>
+                <div class="checkbox-grid-container">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="first" checked>
+                        <label for="first" class="checkbox-label">1 ~ 10</label>
+                    </div>
+                
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="second" checked>
+                        <label for="second" class="checkbox-label">11 ~ 20</label>
+                    </div>
+                
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="third" checked>
+                        <label for="third" class="checkbox-label">21 ~ 30</label>
+                    </div>
+                
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="forth" checked>
+                        <label for="forth" class="checkbox-label">31 ~ 40</label>
+                    </div>
+                
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="fifth" checked>
+                        <label for="fifth" class="checkbox-label">41 ~ 45</label>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class = "lotto-number">
+            <div class = "lottonumber_container">
+                <!-- 당첨 번호가 표시될 곳 -->
+                <span class="lotto_number1">00</span>
+                <span class="lotto_number2">00</span>
+                <span class="lotto_number3">00</span>
+                <span class="lotto_number4">00</span>
+                <span class="lotto_number5">00</span>
+                <span class="lotto_number6">00</span>
+            </div>
+            <div class = "lottobutton_container">
+                <button class = "save_number">Save number</button>
+                <button class = "quick_draw">Lucky Draw</button>
+            </div>
+        </section>
+
+        <div class = "section_container">
+            <section class = "drawnumber">
+                <h2>iM 당첨 번호</h2>
+                <blockquote>버튼을 눌러 번호를 뽑아보세요. 당첨을 기원합니다.</blockquote>
+                <button class = "reset"></button>
+                <div class = "lotto_picture">
+                    <div class = "drawnumber1_container">
+                        <span class="draw_number11">00</span>
+                        <span class="draw_number12">00</span>
+                        <span class="draw_number13">00</span>
+                        <span class="draw_number14">00</span>
+                        <span class="draw_number15">00</span>
+                        <span class="draw_number16">00</span>
+                    </div>
+                    <div class = "drawnumber2_container">
+                        <span class="draw_number21">00</span>
+                        <span class="draw_number22">00</span>
+                        <span class="draw_number23">00</span>
+                        <span class="draw_number24">00</span>
+                        <span class="draw_number25">00</span>
+                        <span class="draw_number26">00</span>
+                    </div>
+                    <div class = "drawnumber3_container">
+                        <span class="draw_number31">00</span>
+                        <span class="draw_number32">00</span>
+                        <span class="draw_number33">00</span>
+                        <span class="draw_number34">00</span>
+                        <span class="draw_number35">00</span>
+                        <span class="draw_number36">00</span>
+                    </div>
+                    <div class = "drawnumber4_container">
+                        <span class="draw_number41">00</span>
+                        <span class="draw_number42">00</span>
+                        <span class="draw_number43">00</span>
+                        <span class="draw_number44">00</span>
+                        <span class="draw_number45">00</span>
+                        <span class="draw_number46">00</span>
+                    </div>
+                    <div class = "drawnumber5_container">
+                        <span class="draw_number51">00</span>
+                        <span class="draw_number52">00</span>
+                        <span class="draw_number53">00</span>
+                        <span class="draw_number54">00</span>
+                        <span class="draw_number55">00</span>
+                        <span class="draw_number56">00</span>
+                    </div>
+                </div>
+                <p>(그림 출처 : 어반브러시)</p>
+            </section>
+
+            <section class = "routine">
+                <h2>iM 당첨 루틴</h2>
+                <blockquote>버튼을 누르며 자신만의 당첨루틴을 만들어보세요.</blockquote>
+                <button class = "effect"></button>
+                <div class = "ad_box1">
+                    <ins class="kakao_ad_area" style="display:none;"
+                    data-ad-unit = "DAN-5OAksEzhmD1dF0pJ"
+                    data-ad-width = "300"
+                    data-ad-height = "250"></ins>
+                    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+                </div>
+            </section>
+        </div>
+
+        <section class = "ad_container">
+            <div class = "ad_box2">
+                <div class = ad_pc>
+                    <ins class="kakao_ad_area" style="display:none;"
+                    data-ad-unit = "DAN-Cp8dX7Sd4L6ZFl7j"
+                    data-ad-width = "728"
+                    data-ad-height = "90"></ins>
+                    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+                </div>
+                <div class = ad_mobile>
+                    <ins class="kakao_ad_area" style="display:none;"
+                    data-ad-unit = "DAN-IzxTIunBZAfkNBSt"
+                    data-ad-width = "320"
+                    data-ad-height = "100"></ins>
+                    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="popup-overlay" onclick="closePopup()"></div>
+
+    <div class="popup" id="popup">
+        <div class="popup-header" id="popup-header">
+            <span>공지사항</span>
+            <span class="close-btn">&times;</span>
+        </div>
+        <div class="popup-content">
+            <p>안녕하세요! 사이트 관리자입니다.<br>사이트 리뉴얼(24/11/12) 관련하여 안내사항 전달드립니다.</p>
+
+            <p><strong>- 번호 생성 확률 업데이트 -</strong><br>
+                확률 선택은 기존 수동 업데이트 방식에서 동행복권 사이트 내 데이터를 기반으로<br>
+                실시간 업데이트 하는 방식으로 수정되었습니다.</p>
+    
+            <p><strong>- 번호군 선택 관련 업데이트 -</strong><br>
+                선택한 번호군 내에서 생성되지 않는 번호군이 발생하는 오류를 확인하였습니다.<br>
+                현재는 선택한 번호군 내에서 최소 1개 이상의 번호가 생성되도록 수정되었습니다.</p>
+    
+            <p><strong>- 사이트 이용 관련 -</strong></p>
+            <ul>
+                <li><strong>적용 확률 선택</strong><br>
+                    클래식: 번호별 통계를 기반으로 확률을 적용시켜 번호를 생성합니다.<br>
+                    랜덤: 무작위로 번호를 생성합니다.<br>
+                    리버스: 번호별 통계를 기반으로 확률을 역으로 적용시켜 번호를 생성합니다.
+                </li>
+                <li><strong>번호군 선택</strong><br>
+                    5개의 번호군 중 원하는 번호군을 선택하면 해당 번호군 내에서 선택한 확률에 따라 번호가 생성됩니다. 초기에는 전체 선택되어 있습니다.
+                </li>
+                <li><strong>이용 순서</strong><br>
+                    1. 적용 확률을 선택<br>
+                    2. 번호군을 선택<br>
+                    3. 럭키 드로우 버튼 클릭<br>
+                    4. 세이브 넘버 버튼 클릭<br>
+                    5. 반복하여 iM 당첨번호 내부에 번호 저장<br>
+                    6. 캡처 또는 사진 찍어 로또를 구매하세요<br>
+                    7. 1등에 당첨되세요
+                </li>
+            </ul>
+            <p>이상입니다! 당첨 기원합니다!</p>    
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Lotto Gacha. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

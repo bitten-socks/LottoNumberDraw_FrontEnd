@@ -1,0 +1,1433 @@
+@media (min-width: 769px) {
+    body {
+        /*font-family: 'Inter', sans-serif;*/
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+    }
+
+    header {
+        background-color: #333;
+        color: rgb(237, 247, 147);
+        padding: 50px;
+        text-align: center;
+        background: url("../images/확률 기반 로또 번호 추첨2.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        text-shadow: 
+            -2px -2px 2px rgba(0, 0, 0, 0.8),  
+            2px -2px 2px rgba(0, 0, 0, 0.8),
+            -2px  2px 2px rgba(0, 0, 0, 0.8),
+            2px  2px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    header h1 {
+        font-size: 3.5em;  /* 텍스트를 크게 하여 시각적으로 강렬한 인상을 줌 */
+        margin: 0;
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 700;  /* 텍스트를 굵게 하여 강조 */
+        line-height: 1.2;  /* 줄 간격을 조정하여 텍스트를 더 시각적으로 균형있게 만듦 */
+        text-transform: uppercase;  /* 모든 글자를 대문자로 변환하여 더 모던한 느낌 */
+        color: rgb(243, 242, 162);  /* 흰색 텍스트로 대비를 강화 */
+    }
+
+
+    main {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .phrase h2  {
+        font-size: 1em;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .phrase blockquote  {
+        font-size: 0.8em;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    /* 전체 컨테이너 설정 */
+    .section1_container {
+        display: flex; /* 수평 배치 */
+        gap: 20px; /* 섹션 간의 간격 */
+        width: 800px; /* 전체 너비 설정 */
+        
+    }
+
+    .prob-button, .select-button {
+        flex: 1; /* flex: 1은 동일한 비율로 크기를 조정함 */
+    }
+
+    /* prob-button 섹션을 7의 비율로 설정 */
+    .prob-button {
+        flex: 7;
+    }
+
+    .select-button {
+        flex: 3;
+    }
+
+    .prob-button{
+        width: 500px; 
+        margin: 0 auto;
+    }
+
+    .prob-button h2  {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .prob_text{
+        font-size: 1em;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    .button1_container {
+        display: flex;
+        justify-content: space-around; /* 버튼들 사이의 간격을 동일하게 설정 */
+        align-items: center; /* 버튼들을 세로로 중앙 정렬 */
+        width: 100%; /* 컨테이너의 전체 너비 */
+        max-width: 1200px;
+        margin: 0 auto; /* 컨테이너를 중앙으로 정렬 */
+        padding: 0px; /* 버튼과 컨테이너 가장자리 사이의 여백 */
+    }
+    
+    .select-button h2 {
+        font-size: 1.2em;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .button2_container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3개의 열을 정의 */
+        gap: 10px; /* 버튼 간의 간격 */
+    }
+
+    .button2_container button:hover {
+        background-color: #939493; /* 버튼 호버 시 색상 변경 */
+    }
+
+    /* 각 버튼의 기본 스타일 */
+    button.classic, button.random, button.reverse {
+        width: 42px; /* 버튼의 너비 */
+        height: 42px; /* 버튼의 높이 */
+        border-radius: 50px; /* 버튼을 둥글게 만들기 위해 */
+        cursor: pointer; /* 버튼에 마우스 포인터 표시 */
+        padding: 0; /* 기본 패딩 제거 */
+        border-radius: 50%;
+        position: relative; 
+    }
+
+    button.clicked::after {
+        content: "";
+        display: block;
+        width: 70%;
+        height: 70%;
+        border-radius: 50%;
+        position: absolute; /* 버튼의 중앙에 위치시키기 위해 절대 위치 설정 */
+        top: 50%; /* 부모 요소의 중앙에 위치하도록 설정 */
+        left: 50%; /* 부모 요소의 중앙에 위치하도록 설정 */
+        transform: translate(-50%, -50%); /* 요소의 중심을 부모 요소의 중심으로 이동 */
+    }
+
+    /* 버튼별로 배경색을 다르게 설정 */
+    button.classic {
+        background: rgba(179,246,255,1); /* 클래식 버튼 색상 */
+    }
+
+    button.classic.clicked::after{
+        background: #69c8f2; /* 진한 색의 원 */
+    }
+
+    button.random {
+        background: rgba(255,249,201,1); /* 랜덤 버튼 색상 */
+    }
+
+    button.random.clicked::after{
+        background: #fbc400; /* 진한 색의 원 */
+    }
+
+    button.reverse {
+        background: rgba(255,187,183,1); /* 리버스 버튼 색상 */
+    }
+
+    button.reverse.clicked::after{
+        background: #ff7272; /* 진한 색의 원 */
+    }
+
+    .bar {
+        width: 300px;
+        max-width: 800px;
+        height: 5px;
+        background: linear-gradient(#ddd, rgba(255,252,252,0));
+        opacity: 1;
+        position: absolute;
+        transform: translate(0,0);
+        border: 2.5px solid rgba(0,0,0,1);
+        overflow: hidden;
+    }
+
+    .text_container {
+        display: flex;
+        justify-content: space-around; /* 텍스트들 사이의 간격을 균등하게 설정 */
+        align-items: center; /* 텍스트들을 세로로 중앙 정렬 */
+        width: 100%; /* 컨테이너의 전체 너비 */
+        margin: 0 auto; /* 컨테이너를 중앙으로 정렬 */
+        max-width: 1200px; /* 섹션의 최대 너비를 설정 (예: 1200px로 설정하면 섹션이 이보다 커지지 않도록 제한) */
+        padding: 5px; /* 컨테이너 가장자리와의 여백 */
+    }
+
+    .classic_text,.random_text,.reverse_text {
+        color: rgba(0,0,0,1);
+        font-family: 'Kanit', sans-serif; /* 폰트 패밀리 지정 */
+        font-weight: normal; /* 폰트 굵기 */
+        font-size: 1em; /* 폰트 크기 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        margin: 0 20px; /* 텍스트 간의 간격 조정 (좌우 여백 설정) */
+    }
+    
+    /* 체크박스와 레이블을 감싸는 그리드 컨테이너 */
+    .checkbox-grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3개의 열을 정의 */
+        column-gap: 10px; /* 수평 간격 */
+        row-gap: 0px; /* 수직 간격을 줄임 */
+        justify-items: center; /* 체크박스들이 중앙에 정렬되도록 설정 */
+    }
+
+    /* 체크박스 스타일 */
+    input[type="checkbox"] {
+        appearance: none; /* 기본 체크박스 제거 */
+        width: 0px;
+        height: 0px;
+        position: relative;
+        top: 32px;
+        left: 10px;
+        cursor: pointer;
+    }
+
+
+    /* 레이블 스타일 */
+    label.checkbox-label {
+        font-size: 1em;
+        width: 85px;
+        height: 25px;
+        background: rgba(255, 255, 255, 0.986);
+        border: 1px solid rgba(0, 0, 0, 1);
+        border-radius: 20px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0px; /* 체크박스 공간 확보 */
+        cursor: pointer;
+        position: relative;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #first:checked + .checkbox-label {
+        background-color: #FBC400; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #second:checked + .checkbox-label {
+        background-color: #69C8F2; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #third:checked + .checkbox-label {
+        background-color: #FF7272; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #forth:checked + .checkbox-label {
+        background-color: #aaa; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #fifth:checked + .checkbox-label {
+        background-color: #B0D840; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    .lotto-number{
+        width: 100%; /* 섹션의 너비를 설정 (예: 80%로 설정하면 부모 요소 너비의 80%가 됩니다) */
+        max-width: 1200px; /* 섹션의 최대 너비를 설정 (예: 1200px로 설정하면 섹션이 이보다 커지지 않도록 제한) */
+        margin: 0 auto;
+    }
+
+    .lottonumber_container{
+        display: flex;
+        justify-content: space-around; /* 텍스트들 사이의 간격을 균등하게 설정 */
+        width:65%;
+        height:50px;
+        align-items: center;
+        margin: 2% auto; /* 컨테이너를 중앙으로 정렬 */
+        background: rgba(255,249,201,1);
+        border: 1px solid rgba(0,0,0,1);
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        overflow: hidden;
+    }
+
+    .lotto_number1,.lotto_number2,.lotto_number3,.lotto_number4,.lotto_number5,.lotto_number6{
+        width: 40px; 
+        height: 40px; 
+        border-radius: 50px; /* 버튼을 둥글게 만들기 위해 */
+        padding: 0; /* 기본 패딩 제거 */
+        border-radius: 50%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        position: relative; 
+        background: #ddd;
+        display: flex; /* Flexbox를 사용하여 내용물을 중앙에 배치 */
+        align-items: center; /* 세로 중앙 정렬 */
+        justify-content: center; /* 가로 중앙 정렬 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        font-size: 1em; /* 필요에 따라 텍스트 크기 조정 */
+    }
+    .lottobutton_container{
+        display: flex;
+        justify-content: space-around; /* 텍스트들 사이의 간격을 균등하게 설정 */
+        width:70%;
+        height:50px;
+        align-items: center;
+        margin: 0% auto; /* 컨테이너를 중앙으로 정렬 */
+    }
+
+    button.save_number{
+        font-size: 1em;
+        width: 30%;
+        height: 35px;
+        background: rgba(0,224,255,0.30000001192092896);
+        color:black;
+        opacity: 1;
+        border: 1px solid rgba(0,0,0,1);
+        border-radius: 20px; /* 이 속성으로도 모서리를 둥글게 만들 수 있습니다 */
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        cursor: pointer;
+        padding: 0;
+        cursor: pointer; /* 버튼에 마우스 포인터 표시 */
+    }
+
+    button.save_number:active {
+        box-shadow: none; /* 그림자를 제거하여 눌린 것 같은 느낌을 줌 */
+        transform: translateY(1px); /* 버튼이 아래로 조금 이동하는 효과 */
+    }
+
+    button.quick_draw{
+        font-size: 1em;
+        width: 30%;
+        height: 35px;
+        background: rgba(255,27,13,0.30000001192092896);
+        color:black;
+        opacity: 1;
+        border: 1px solid rgba(0,0,0,1);
+        border-radius: 20px; /* 이 속성으로도 모서리를 둥글게 만들 수 있습니다 */
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        cursor: pointer;
+        padding: 0;
+        cursor: pointer; /* 버튼에 마우스 포인터 표시 */
+    }
+
+    button.quick_draw:active {
+        box-shadow: none; /* 그림자를 제거하여 눌린 것 같은 느낌을 줌 */
+        transform: translateY(1px); /* 버튼이 아래로 조금 이동하는 효과 */
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0.3;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    .quick_draw.loading {
+        animation: fadeIn 1.5s infinite alternate;
+    }
+
+    .section_container {
+        display: flex; /* 자식 요소들을 가로로 배치 */
+        justify-content: space-between; /* 섹션 간의 여백을 고르게 배치 */
+        align-items: flex-start; /* 섹션들을 위쪽에 정렬 */
+        gap: 60px; /* 섹션 간의 간격 */
+        padding: 60px; /* 컨테이너 내 여백 */
+        margin-bottom: 10px;
+    }
+
+    .drawnumber, .routine {
+        flex: 1; /* 두 섹션이 동일한 너비를 차지하도록 설정 */
+        background-color: #fffcfc; /* 배경색을 설정 */
+        padding: 10px; /* 내부 여백을 설정 */
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+        border-radius: 8px; /* 모서리를 둥글게 */
+    }
+
+    .drawnumber h2{
+        font-size: 1.5em;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    button.reset{
+        width: 45px;
+        height: 45px;
+        background-color:#ffffff;
+        background: url("../images/v8_6.png");
+        background-size: 30px,30px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transform: translatex(330px) translatey(-80px); /* 회전 각도 지정 */
+        opacity: 1;
+        border-radius: 50%;
+    }
+    .drawnumber blockquote{
+        font-size: 1em;
+        margin-bottom: 0px;
+        margin: 0; 
+        text-align: center;
+    }
+
+    .lotto_picture{
+        align-items: center;
+        text-align: center;
+        width: 400px;
+        height: 500px;
+        background: url("../images/v4_12.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        opacity: 1;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .drawnumber1_container,.drawnumber2_container,.drawnumber3_container,.drawnumber4_container,.drawnumber5_container{
+        display: flex; /* 플렉스박스를 사용하여 내부 요소 정렬 */
+        justify-content: space-between; /* 요소 사이에 공간 분배 */
+        width: 53%;
+        font-weight: bold;
+        align-items: center;
+        text-align: center;
+        background-color: #ffffff; /* 배경색을 설정 */
+        margin: 0 auto;
+        transform: translateX(40px); 
+        margin-bottom: -2.0px;
+        font-size: 1.2em;
+    }
+
+    .drawnumber1_container{
+        margin-top:270px;
+    }
+
+    .routine h2{
+        font-size: 1.5em;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .routine blockquote{
+        font-size: 1em;
+        margin-bottom: 0px;
+        margin: 0; 
+        text-align: center;
+    }
+    button.effect{
+        width: 45px;
+        height: 45px;
+        background: rgba(255,94,84,1);
+        opacity: 1;
+        transform: translatex(330px) translatey(-80px); /* 회전 각도 지정 */
+        border-radius: 50%;
+    }
+    .ad_box1{
+        display: flex;
+        justify-content: center; /* 수평 중앙 정렬 */
+        align-items: center;    /* 수직 중앙 정렬 */
+        width: 400px;
+        height: 500px;
+        background-color:#fffcfc;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        opacity: 1;
+        overflow: hidden;
+        margin: 0 auto;
+        margin-top:0px;
+        margin-bottom: 35px;
+    }
+
+
+    @media (max-width: 768px) {
+        .section_container {
+            flex-direction: column; /* 화면 크기가 작아지면 섹션을 세로로 배치 */
+        }
+    }
+
+    .ad_container{
+        display: flex;
+        justify-content: center; /* 텍스트들 사이의 간격을 균등하게 설정 */
+        width:100%;
+        height:100px;
+        align-items: center;
+        margin: 0% auto; /* 컨테이너를 중앙으로 정렬 */
+    }
+
+    .ad_box2{
+        display: none;
+        justify-content: center; /* 수평 중앙 정렬 */
+        align-items: center;    /* 수직 중앙 정렬 */
+        width: 100%;
+        height: 100px;
+        background-color: #fffcfc;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        opacity: 1;
+        overflow: hidden;
+        margin-bottom: -50px; /* 여백을 제거하거나 적절하게 조정 */
+    }
+
+    .ad_pc {
+        display: none; /* 기본적으로 숨김 */
+    }    
+
+    .ad_mobile {
+        display: none; /* 기본적으로 숨김 */
+    }   
+
+    /* PC 환경일 때 광고 표시 */
+    @media (min-width: 769px) {
+        .ad_box2 {
+            display: flex; /* PC 환경에서 보이도록 설정 */
+        }
+
+        .ad_pc {
+            display: block; /* PC 광고를 표시 */
+        }
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 20px;
+        margin-top: 40px;
+    }
+
+    footer p {
+        margin: 5px 0;
+    }
+
+    @keyframes blink1 {
+        0% {
+            box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+        50% {
+            box-shadow: 0 0 30px rgb(252, 100, 171);
+        }
+        100% {
+            box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+    }
+    
+    /* 반짝이는 효과를 위한 클래스 */
+    .blinking1 {
+        animation: blink1 1.5s infinite;
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    @keyframes blink1-1 {
+        0% {
+            box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+        50% {
+            box-shadow: 0 0 30px rgb(252, 181, 75);
+        }
+        100% {
+            box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+    }
+    
+    /* 반짝이는 효과를 위한 클래스 */
+    .blinking1-1 {
+        animation: blink1-1 1.5s infinite;
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    
+    @keyframes blink2 {
+        0% {
+        box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+        50% {
+        box-shadow: 0 0 30px rgb(252, 100, 171);
+        }
+        100% {
+        box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+    }
+    
+    .blinking2 {
+        animation: blink2 0.5s infinite; /* 타이밍 조절: 1.5초 */
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    
+    @keyframes blink2-1 {
+        0% {
+        box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+        50% {
+        box-shadow: 0 0 30px rgb(252, 181, 75);
+        }
+        100% {
+        box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+    }
+    
+    .blinking2-1 {
+        animation: blink2-1 0.5s infinite; /* 타이밍 조절: 1.5초 */
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    
+    @keyframes blink3 {
+        0% {
+        box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+        50% {
+        box-shadow: 0 0 30px rgb(252, 100, 171);
+        }
+        100% {
+        box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+    }
+    
+    
+    
+    .blinking3 {
+        animation: blink3 1.5s infinite, 
+                blink3 0.5s infinite 1.5S, 
+                blink3 1.5s infinite 3.5S , 
+                blink3 0.5s infinite 5S,
+                blink3 1.5s infinite 7S, 
+                blink3 0.5s infinite 8.5S,
+                blink3 1.5s infinite 10.5S, 
+                blink3 0.5s infinite 12S,
+                blink3 1.5s infinite 14S, 
+                blink3 0.5s infinite 15.5S,
+                blink3 1.5s infinite 17S, 
+                blink3 0.5s infinite 18.5S; /* 타이밍 조절: 2초 */  
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    
+    @keyframes blink3-1 {
+        0% {
+        box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+        50% {
+        box-shadow: 0 0 30px rgb(252, 181, 75);
+        }
+        100% {
+        box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+    }
+    
+    
+    
+    .blinking3-1 {
+        animation: blink3-1 1.5s infinite, 
+                blink3-1 0.5s infinite 1.5S, 
+                blink3-1 1.5s infinite 3.5S , 
+                blink3-1 0.5s infinite 5S,
+                blink3-1 1.5s infinite 7S, 
+                blink3-1 0.5s infinite 8.5S,
+                blink3-1 1.5s infinite 10.5S, 
+                blink3-1 0.5s infinite 12S,
+                blink3-1 1.5s infinite 14S, 
+                blink3-1 0.5s infinite 15.5S,
+                blink3-1 1.5s infinite 17S, 
+                blink3-1 0.5s infinite 18.5S; /* 타이밍 조절: 2초 */
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    /* 팝업창 스타일 */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 570px;
+        height: 750px;
+        padding: 0;
+        background-color: white;
+        border: 1px solid #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        cursor: default;
+    }
+
+    /* 팝업창 제목 바 스타일 */
+    .popup-header {
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        /* cursor: move; */
+        display: flex;
+        align-items: center;
+    }
+    /* 닫기 버튼 스타일 */
+    .close-btn {
+        margin-left: auto;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* 팝업창 내용 스타일 */
+    .popup-content {
+        padding: 20px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* 배경 어둡게 */
+    .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+}
+
+    
+
+/*------------------------ 스마트폰 뷰 -----------------------*/
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+    }
+
+    header {
+        background-color: #333;
+        color: rgb(237, 247, 147);
+        padding: 20px;
+        text-align: center;
+        background: url("../images/확률 기반 로또 번호 추첨2.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        text-shadow: 
+            -1px -1px 1px rgba(0, 0, 0, 0.8),  
+            1px -1px 1px rgba(0, 0, 0, 0.8),
+            -1px  1px 1px rgba(0, 0, 0, 0.8),
+            1px  1px 1px rgba(0, 0, 0, 0.8);
+    }
+
+    header h1 {
+        font-size: 1.6em;  /* 텍스트를 크게 하여 시각적으로 강렬한 인상을 줌 */
+        margin: 0;
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 700;  /* 텍스트를 굵게 하여 강조 */
+        line-height: 1.2;  /* 줄 간격을 조정하여 텍스트를 더 시각적으로 균형있게 만듦 */
+        text-transform: uppercase;  /* 모든 글자를 대문자로 변환하여 더 모던한 느낌 */
+        color: rgb(243, 242, 162);  /* 흰색 텍스트로 대비를 강화 */
+    }
+
+
+    main {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .phrase h2  {
+        font-size: 8px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .phrase blockquote  {
+        font-size: 6.5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    /* 전체 컨테이너 설정 */
+    .section1_container {
+        display: flex; /* 수평 배치 */
+        flex-direction: column;
+        gap: 0px; /* 섹션 간의 간격 */
+        width: 480px; /* 전체 너비 설정 */
+        align-items: center;  
+        margin-bottom : 20px;      
+    }
+    .prob-button{
+        width: 500px; 
+        margin: 0 auto;
+    }
+
+    .prob-button h2  {
+        font-size: 1em;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .prob_text{
+        font-size: 0.7em;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    .button1_container {
+        display: flex;
+        justify-content: space-around; /* 버튼들 사이의 간격을 동일하게 설정 */
+        align-items: center; /* 버튼들을 세로로 중앙 정렬 */
+        width: 100%; /* 컨테이너의 전체 너비 */
+        max-width: 1200px;
+        margin: 0 auto; /* 컨테이너를 중앙으로 정렬 */
+        padding: 0px; /* 버튼과 컨테이너 가장자리 사이의 여백 */
+    }
+    
+    .select-button h2 {
+        font-size: 1em;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .button2_container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3개의 열을 정의 */
+        gap: 10px; /* 버튼 간의 간격 */
+    }
+
+    .button2_container button:hover {
+        background-color: #939493; /* 버튼 호버 시 색상 변경 */
+    }
+
+    /* 각 버튼의 기본 스타일 */
+    button.classic, button.random, button.reverse {
+        width: 30px; /* 버튼의 너비 */
+        height: 30px; /* 버튼의 높이 */
+        border-radius: 20px; /* 버튼을 둥글게 만들기 위해 */
+        cursor: pointer; /* 버튼에 마우스 포인터 표시 */
+        padding: 0; /* 기본 패딩 제거 */
+        border-radius: 50%;
+        position: relative; 
+    }
+
+    button.clicked::after {
+        content: "";
+        display: block;
+        width: 70%;
+        height: 70%;
+        border-radius: 50%;
+        position: absolute; /* 버튼의 중앙에 위치시키기 위해 절대 위치 설정 */
+        top: 50%; /* 부모 요소의 중앙에 위치하도록 설정 */
+        left: 50%; /* 부모 요소의 중앙에 위치하도록 설정 */
+        transform: translate(-50%, -50%); /* 요소의 중심을 부모 요소의 중심으로 이동 */
+    }
+
+    /* 버튼별로 배경색을 다르게 설정 */
+    button.classic {
+        background: rgba(179,246,255,1); /* 클래식 버튼 색상 */
+    }
+
+    button.classic.clicked::after{
+        background: #69c8f2; /* 진한 색의 원 */
+    }
+
+    button.random {
+        background: rgba(255,249,201,1); /* 랜덤 버튼 색상 */
+    }
+
+    button.random.clicked::after{
+        background: #fbc400; /* 진한 색의 원 */
+    }
+
+    button.reverse {
+        background: rgba(255,187,183,1); /* 리버스 버튼 색상 */
+    }
+
+    button.reverse.clicked::after{
+        background: #ff7272; /* 진한 색의 원 */
+    }
+
+    .bar {
+        width: 320px;
+        max-width: 800px;
+        height: 5px;
+        background: linear-gradient(#ddd, rgba(255,252,252,0));
+        opacity: 1;
+        position: absolute;
+        transform: translate(0,0);
+        border: 2.5px solid rgba(0,0,0,1);
+        overflow: hidden;
+    }
+
+    .text_container {
+        display: flex;
+        justify-content: space-around; /* 텍스트들 사이의 간격을 균등하게 설정 */
+        align-items: center; /* 텍스트들을 세로로 중앙 정렬 */
+        width: 100%; /* 컨테이너의 전체 너비 */
+        margin: 0 auto; /* 컨테이너를 중앙으로 정렬 */
+        max-width: 1200px; /* 섹션의 최대 너비를 설정 (예: 1200px로 설정하면 섹션이 이보다 커지지 않도록 제한) */
+        padding: 5px; /* 컨테이너 가장자리와의 여백 */
+    }
+
+    .classic_text,.random_text,.reverse_text {
+        color: rgba(0,0,0,1);
+        font-family: 'Kanit', sans-serif; /* 폰트 패밀리 지정 */
+        font-weight: normal; /* 폰트 굵기 */
+        font-size: 0.6em; /* 폰트 크기 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        margin: 0 0px; /* 텍스트 간의 간격 조정 (좌우 여백 설정) */
+    }
+    
+    /* 체크박스와 레이블을 감싸는 그리드 컨테이너 */
+    .checkbox-grid-container {
+        display: grid;
+        width:350px;
+        grid-template-columns: repeat(3, 1fr); /* 3개의 열을 정의 */
+        column-gap: 0px; /* 수평 간격 */
+        row-gap: 0px; /* 수직 간격을 줄임 */
+        justify-items: center; /* 체크박스들이 중앙에 정렬되도록 설정 */
+    }
+
+    /* 체크박스 스타일 */
+    input[type="checkbox"] {
+        appearance: none; /* 기본 체크박스 제거 */
+        width: 0px;
+        height: 0px;
+        position: relative;
+        top: 32px;
+        left: 10px;
+        cursor: pointer;
+    }
+
+
+    /* 레이블 스타일 */
+    label.checkbox-label {
+        font-size: 0.5em;
+        width: 55px;
+        height: 15px;
+        background: rgba(255, 255, 255, 0.986);
+        border: 1px solid rgba(0, 0, 0, 1);
+        border-radius: 20px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0px; /* 체크박스 공간 확보 */
+        cursor: pointer;
+        position: relative;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #first:checked + .checkbox-label {
+        background-color: #FBC400; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #second:checked + .checkbox-label {
+        background-color: #69C8F2; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #third:checked + .checkbox-label {
+        background-color: #FF7272; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #forth:checked + .checkbox-label {
+        background-color: #aaa; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    /* 체크박스가 선택되었을 때 라벨의 색상 변경 (각각 다른 색상 적용) */
+    #fifth:checked + .checkbox-label {
+        background-color: #B0D840; /* 첫 번째 체크박스 선택 시 색상 */
+        border-color:#333;
+        color: white;
+    }
+
+    .lotto-number{
+        width: 100%; /* 섹션의 너비를 설정 (예: 80%로 설정하면 부모 요소 너비의 80%가 됩니다) */
+        max-width: 1200px; /* 섹션의 최대 너비를 설정 (예: 1200px로 설정하면 섹션이 이보다 커지지 않도록 제한) */
+        margin: 0 auto;
+    }
+
+    .lottonumber_container{
+        display: flex;
+        justify-content: space-around; /* 텍스트들 사이의 간격을 균등하게 설정 */
+        width:350px;
+        height:30px;
+        align-items: center;
+        margin: 2% auto; /* 컨테이너를 중앙으로 정렬 */
+        background: rgba(255,249,201,1);
+        border: 1px solid rgba(0,0,0,1);
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        overflow: hidden;
+    }
+
+    .lotto_number1,.lotto_number2,.lotto_number3,.lotto_number4,.lotto_number5,.lotto_number6{
+        width: 25px; 
+        height: 25px; 
+        border-radius: 50px; /* 버튼을 둥글게 만들기 위해 */
+        padding: 0; /* 기본 패딩 제거 */
+        border-radius: 50%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        position: relative; 
+        background: #ddd;
+        display: flex; /* Flexbox를 사용하여 내용물을 중앙에 배치 */
+        align-items: center; /* 세로 중앙 정렬 */
+        justify-content: center; /* 가로 중앙 정렬 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        font-size: 0.8em; /* 필요에 따라 텍스트 크기 조정 */
+    }
+    .lottobutton_container{
+        display: flex;
+        gap:20px;
+        justify-content: space-around; /* 텍스트들 사이의 간격을 균등하게 설정 */
+        width:350px;
+        height:50px;
+        align-items: center;
+        margin: 0% auto; /* 컨테이너를 중앙으로 정렬 */
+    }
+
+    button.save_number{
+        font-size: 0.7em;
+        width: 40%;
+        height: 20px;
+        background: rgba(0,224,255,0.30000001192092896);
+        color:black;
+        opacity: 1;
+        border: 1px solid rgba(0,0,0,1);
+        border-radius: 20px; /* 이 속성으로도 모서리를 둥글게 만들 수 있습니다 */
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        cursor: pointer;
+        padding: 0;
+        cursor: pointer; /* 버튼에 마우스 포인터 표시 */
+    }
+
+    button.save_number:active {
+        box-shadow: none; /* 그림자를 제거하여 눌린 것 같은 느낌을 줌 */
+        transform: translateY(1px); /* 버튼이 아래로 조금 이동하는 효과 */
+    }
+
+    button.quick_draw{
+        font-size: 0.7em;
+        width: 40%;
+        height: 20px;
+        background: rgba(255,27,13,0.30000001192092896);
+        color:black;
+        opacity: 1;
+        border: 1px solid rgba(0,0,0,1);
+        border-radius: 20px; /* 이 속성으로도 모서리를 둥글게 만들 수 있습니다 */
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        cursor: pointer;
+        padding: 0;
+        cursor: pointer; /* 버튼에 마우스 포인터 표시 */
+    }
+
+    button.quick_draw:active {
+        box-shadow: none; /* 그림자를 제거하여 눌린 것 같은 느낌을 줌 */
+        transform: translateY(1px); /* 버튼이 아래로 조금 이동하는 효과 */
+    }
+
+    .section_container {
+        display: flex; /* 자식 요소들을 가로로 배치 */
+        justify-content: space-between; /* 섹션 간의 여백을 고르게 배치 */
+        align-items: flex-start; /* 섹션들을 위쪽에 정렬 */
+        gap: 60px; /* 섹션 간의 간격 */
+        padding: 60px; /* 컨테이너 내 여백 */
+        margin-bottom: 10px;
+    }
+
+    .drawnumber, .routine {
+        flex: 1; /* 두 섹션이 동일한 너비를 차지하도록 설정 */
+        background-color: #fffcfc; /* 배경색을 설정 */
+        padding: 10px; /* 내부 여백을 설정 */
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+        border-radius: 8px; /* 모서리를 둥글게 */
+    }
+
+    .drawnumber h2{
+        font-size: 1.5em;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    button.reset{
+        width: 45px;
+        height: 45px;
+        background-color:#ffffff;
+        background: url("../images/v8_6.png");
+        background-size: 30px,30px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transform: translatex(330px) translatey(-80px); /* 회전 각도 지정 */
+        opacity: 1;
+        border-radius: 50%;
+    }
+    .drawnumber blockquote{
+        font-size: 1em;
+        margin-bottom: 0px;
+        margin: 0; 
+        text-align: center;
+    }
+
+    .lotto_picture{
+        align-items: center;
+        text-align: center;
+        width: 400px;
+        height: 500px;
+        background: url("../images/v4_12.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        opacity: 1;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .drawnumber1_container,.drawnumber2_container,.drawnumber3_container,.drawnumber4_container,.drawnumber5_container{
+        display: flex; /* 플렉스박스를 사용하여 내부 요소 정렬 */
+        justify-content: space-between; /* 요소 사이에 공간 분배 */
+        width: 53%;
+        font-weight: bold;
+        align-items: center;
+        text-align: center;
+        background-color: #ffffff; /* 배경색을 설정 */
+        margin: 0 auto;
+        transform: translateX(40px); 
+        margin-bottom: -2.0px;
+        font-size: 1.2em;
+    }
+
+    .drawnumber1_container{
+        margin-top:270px;
+    }
+
+    .routine h2{
+        font-size: 1.5em;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .routine blockquote{
+        font-size: 1em;
+        margin-bottom: 0px;
+        margin: 0; 
+        text-align: center;
+    }
+    button.effect{
+        width: 45px;
+        height: 45px;
+        background: rgba(255,94,84,1);
+        opacity: 1;
+        transform: translatex(330px) translatey(-80px); /* 회전 각도 지정 */
+        border-radius: 50%;
+    }
+    .ad_box1{
+        display: flex;
+        justify-content: center; /* 수평 중앙 정렬 */
+        align-items: center;    /* 수직 중앙 정렬 */
+        width: 400px;
+        height: 500px;
+        background-color:#fffcfc;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        opacity: 1;
+        overflow: hidden;
+        margin: 0 auto;
+        margin-top:0px;
+        margin-bottom: 35px;
+    }
+
+
+    @media (max-width: 768px) {
+        .section_container {
+            flex-direction: column; /* 화면 크기가 작아지면 섹션을 세로로 배치 */
+        }
+    }
+
+    .ad_container{
+        display: flex;
+        justify-content: center; /* 텍스트들 사이의 간격을 균등하게 설정 */
+        width:100%;
+        height:100px;
+        align-items: center;
+        margin: 0% auto; /* 컨테이너를 중앙으로 정렬 */
+    }
+
+    .ad_box2{
+        display: none;
+        justify-content: center; /* 수평 중앙 정렬 */
+        align-items: center;    /* 수직 중앙 정렬 */
+        width: 100%;
+        height: 110px;
+        background-color: #fffcfc;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        opacity: 1;
+        overflow: hidden;
+        margin-bottom: -50px; /* 여백을 제거하거나 적절하게 조정 */
+    }
+
+    .ad_pc {
+        display: none; /* 기본적으로 숨김 */
+    }    
+
+    .ad_mobile {
+        display: none; /* 기본적으로 숨김 */
+    }   
+
+    /* PC 환경일 때 광고 표시 */
+    @media (max-width: 768px) {
+        .ad_box2 {
+            display: flex; /* PC 환경에서 보이도록 설정 */
+        }
+
+        .ad_mobile {
+            display: block; /* PC 광고를 표시 */
+        }
+    }    
+
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 20px;
+        margin-top: 40px;
+    }
+
+    footer p {
+        margin: 5px 0;
+    }
+
+    @keyframes blink1 {
+        0% {
+            box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+        50% {
+            box-shadow: 0 0 30px rgb(252, 100, 171);
+        }
+        100% {
+            box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+    }
+    
+    /* 반짝이는 효과를 위한 클래스 */
+    .blinking1 {
+        animation: blink1 1.5s infinite;
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    @keyframes blink1-1 {
+        0% {
+            box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+        50% {
+            box-shadow: 0 0 30px rgb(252, 181, 75);
+        }
+        100% {
+            box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+    }
+    
+    /* 반짝이는 효과를 위한 클래스 */
+    .blinking1-1 {
+        animation: blink1-1 1.5s infinite;
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    
+    @keyframes blink2 {
+        0% {
+        box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+        50% {
+        box-shadow: 0 0 30px rgb(252, 100, 171);
+        }
+        100% {
+        box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+    }
+    
+    .blinking2 {
+        animation: blink2 0.5s infinite; /* 타이밍 조절: 1.5초 */
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    
+    @keyframes blink2-1 {
+        0% {
+        box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+        50% {
+        box-shadow: 0 0 30px rgb(252, 181, 75);
+        }
+        100% {
+        box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+    }
+    
+    .blinking2-1 {
+        animation: blink2-1 0.5s infinite; /* 타이밍 조절: 1.5초 */
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    
+    @keyframes blink3 {
+        0% {
+        box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+        50% {
+        box-shadow: 0 0 30px rgb(252, 100, 171);
+        }
+        100% {
+        box-shadow: 0 0 10px rgb(252, 100, 171);
+        }
+    }
+    
+    
+    
+    .blinking3 {
+        animation: blink3 1.5s infinite, 
+                blink3 0.5s infinite 1.5S, 
+                blink3 1.5s infinite 3.5S , 
+                blink3 0.5s infinite 5S,
+                blink3 1.5s infinite 7S, 
+                blink3 0.5s infinite 8.5S,
+                blink3 1.5s infinite 10.5S, 
+                blink3 0.5s infinite 12S,
+                blink3 1.5s infinite 14S, 
+                blink3 0.5s infinite 15.5S,
+                blink3 1.5s infinite 17S, 
+                blink3 0.5s infinite 18.5S; /* 타이밍 조절: 2초 */  
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+    
+    @keyframes blink3-1 {
+        0% {
+        box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+        50% {
+        box-shadow: 0 0 30px rgb(252, 181, 75);
+        }
+        100% {
+        box-shadow: 0 0 10px rgb(252, 181, 75);
+        }
+    }
+    
+    
+    
+    .blinking3-1 {
+        animation: blink3-1 1.5s infinite, 
+                blink3-1 0.5s infinite 1.5S, 
+                blink3-1 1.5s infinite 3.5S , 
+                blink3-1 0.5s infinite 5S,
+                blink3-1 1.5s infinite 7S, 
+                blink3-1 0.5s infinite 8.5S,
+                blink3-1 1.5s infinite 10.5S, 
+                blink3-1 0.5s infinite 12S,
+                blink3-1 1.5s infinite 14S, 
+                blink3-1 0.5s infinite 15.5S,
+                blink3-1 1.5s infinite 17S, 
+                blink3-1 0.5s infinite 18.5S; /* 타이밍 조절: 2초 */
+        border-radius: 5px; /* 필요에 따라 조정 */
+    }
+        /* 팝업창 스타일 */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 470px;
+        height: 650px;
+        padding: 0;
+        background-color: white;
+        border: 1px solid #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        cursor: default;
+    }
+
+    /* 팝업창 제목 바 스타일 */
+    .popup-header {
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        /* cursor: move; */
+        display: flex;
+        align-items: center;
+    }
+    /* 닫기 버튼 스타일 */
+    .close-btn {
+        margin-left: auto;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* 팝업창 내용 스타일 */
+    .popup-content {
+        padding: 20px;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    /* 배경 어둡게 */
+    .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+}
