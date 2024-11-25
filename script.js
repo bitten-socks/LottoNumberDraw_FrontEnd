@@ -259,3 +259,17 @@ function closePopup() {
 
 // 닫기 버튼에 클릭 이벤트 리스너 추가
 document.querySelector('.close-btn').addEventListener('click', closePopup);
+
+// 버튼 클릭 시 페이지 토글
+const pageShiftButton = document.querySelector(".page_shift");
+const newContent = document.getElementById("new_content");
+
+pageShiftButton.addEventListener("click", function () {
+    if (newContent.classList.contains("hidden")) {
+        newContent.classList.remove("hidden");
+        newContent.classList.add("visible");
+    } else {
+        newContent.classList.remove("visible");
+        newContent.classList.add("hidden");
+    }
+});

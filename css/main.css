@@ -51,6 +51,38 @@
         margin-bottom: 10px;
         text-align: center;
     }
+    .page_button {
+        width : 800px;
+        display: flex;
+        justify-content: flex-start; /* 좌측 정렬 */
+        align-items: center;
+        padding: 0px; /* 버튼과 컨테이너 가장자리 사이에 여백 */
+    }
+    
+    .page_shift {
+        margin: 0; /* 버튼이 더 왼쪽으로 치우치지 않도록 */
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-size : 1em;
+        width: 15%;
+        height: 30px;
+        background: rgba(211, 211, 211, 0.3);
+        color:black;
+        opacity: 1;
+        border: 1px solid rgba(0,0,0,1);
+        border-radius: 10px; /* 이 속성으로도 모서리를 둥글게 만들 수 있습니다 */
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        cursor: pointer;
+        padding: 0;
+        cursor: pointer; /* 버튼에 마우스 포인터 표시 */
+    }
+
+    button.page_shift:active {
+        box-shadow: none; /* 그림자를 제거하여 눌린 것 같은 느낌을 줌 */
+        transform: translateY(1px); /* 버튼이 아래로 조금 이동하는 효과 */
+    }
+
     /* 전체 컨테이너 설정 */
     .section1_container {
         display: flex; /* 수평 배치 */
@@ -722,6 +754,13 @@
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 999;
+    }
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
     }
 }
 
